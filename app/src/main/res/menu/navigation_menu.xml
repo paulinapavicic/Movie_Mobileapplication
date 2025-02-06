@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menuItems"
+        android:title="@string/items"
+        android:icon="@drawable/items"
+        />
+    <item
+        android:id="@+id/menuAbout"
+        android:title="@string/about"
+        android:icon="@drawable/about"
+        />
+
+
+    <group android:checkableBehavior="single">
+    <item
+        android:id="@+id/menuChangeToEnglish"
+        android:title="@string/english"
+        android:icon="@drawable/ic_english"/>
+
+    <item
+        android:id="@+id/menuChangeToCroatian"
+        android:title="@string/croatian"
+        android:icon="@drawable/ic_croatian"/>
+    </group>
+
+</menu>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:id="@+id/fragments.xml"
+    app:startDestination="@id/menuItems">
+
+    <fragment
+        android:id="@+id/menuItems"
+        android:name="hr.algebra.movie.fragment.ItemsFragment"
+        android:label="@string/items"
+        />
+    <fragment
+        android:id="@+id/menuAbout"
+        android:name="hr.algebra.movie.fragment.AboutFragment"
+        android:label="@string/about"
+        />
+
+</navigation>

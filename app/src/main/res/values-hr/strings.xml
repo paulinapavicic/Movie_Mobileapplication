@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="no_internet">Nema interneta</string>
+    <string name="app_name">Film</string>
+    <string name="hello_blank_fragment">Pozdrav</string>
+    <string name="app_made_by_paulina">Aplikaciju napravila Paulina</string>
+    <string name="picture_of_the_day">Slika dana</string>
+    <string name="about">O aplikaciji</string>
+    <string name="items">artikli</string>
+    <string name="exit">Izlaz</string>
+    <string name="are_you_sure_you_want_to_exit">Jesi li siguran da želiš izaći?</string>
+    <string name="yes">Da</string>
+    <string name="no">Ne</string>
+    <string name="loading">Učitavanje...</string>
+    <string name="overview">Opis</string>
+    <string name="movie_title">Naslov filma</string>
+    <string name="english">Engleski</string>
+    <string name="croatian">Hrvatski</string>
+    <string name="release_date">Datum izlaska:</string>
+    <string name="rating">"Ocjena: "</string>
+
+
+
+</resources>

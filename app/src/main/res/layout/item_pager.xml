@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:padding="16dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- Movie Poster -->
+        <ImageView
+            android:id="@+id/ivPagerItem"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:scaleType="centerCrop"
+            tools:src="@drawable/popcorn" />
+
+        <!-- Movie Title -->
+        <TextView
+            android:id="@+id/tvPagerTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#3F51B5"
+            tools:text="@string/movie_title" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#F44336"
+            android:text="@string/release_date" />
+        <!-- Release Date -->
+        <TextView
+            android:id="@+id/tvPagerReleaseDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            android:text="Datum"
+           />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#F44336"
+            android:text="@string/rating" />
+        <!-- Vote Average -->
+        <TextView
+            android:id="@+id/tvPagerVoteAverage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            android:text="Ocjena"
+
+            />
+
+        <!-- Overview Label -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#3F51B5"
+            android:text="@string/overview" />
+
+        <!-- Movie Overview -->
+        <TextView
+            android:id="@+id/tvPagerOverview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            tools:text="This is a sample movie overview. It provides a brief description of the movie." />
+
+    </LinearLayout>
+
+</ScrollView>
