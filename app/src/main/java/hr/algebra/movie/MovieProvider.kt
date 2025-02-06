@@ -27,50 +27,85 @@ class MovieProvider : ContentProvider() {
 
     private lateinit var repository: Repository
 
-    override fun delete(uri: Uri, selection: String?, selectionArgs: Array<String>?): Int {
-        when(URI_MATCHER.match(uri)){
-            ITEMS -> return repository.delete(selection, selectionArgs)
-            ITEM_ID -> {
-                uri.lastPathSegment?.let { id ->
-                    repository.delete("${Item::id.name} = ?", arrayOf(id))
-                }
-
-            }
-        }
-        throw IllegalArgumentException("WRONG URI: $uri")
-    }
-
-    override fun getType(uri: Uri): String? {
-        return null
-    }
-
-    override fun insert(uri: Uri, values: ContentValues?): Uri {
-        val id = repository.insert(values)
-        return ContentUris.withAppendedId(MOVIES_PROVIDER_CONTENT_URI, id)
-    }
-
     override fun onCreate(): Boolean {
         repository = getRepository(context!!)
         return true
+
+
+
     }
 
     override fun query(
-        uri: Uri, projection: Array<String>?, selection: String?,
-        selectionArgs: Array<String>?, sortOrder: String?
-    ): Cursor? = repository.query(projection, selection, selectionArgs, sortOrder)
-    override fun update(
-        uri: Uri, values: ContentValues?, selection: String?,
-        selectionArgs: Array<String>?
-    ): Int {
-        when(URI_MATCHER.match(uri)){
-            ITEMS -> return repository.update(values,selection, selectionArgs)
+        uri: Uri,
+        projection: Array<String>?,
+        selection: String?,
+        selectionArgs: Array<String>?,
+        sortOrder: String?
+    ): Cursor? {
+        val cursor = when (URI_MATCHER.match(uri)) {
+            ITEMS -> repository.query(projection, selection, selectionArgs, sortOrder)
             ITEM_ID -> {
-                uri.lastPathSegment?.let { id ->
-                    repository.update(values,"${Item::id.name} = ?", arrayOf(id))
-                }
-
+                val id = uri.lastPathSegment ?: return null
+                repository.query(projection, "id = ?", arrayOf(id), sortOrder)
             }
+            else -> throw IllegalArgumentException("Unknown URI: $uri")
         }
-        throw IllegalArgumentException("WRONG URI: $uri")
+
+        cursor?.setNotificationUri(context!!.contentResolver, uri)
+        return cursor
     }
+
+    override fun insert(uri: Uri, values: ContentValues?): Uri? {
+        return when (URI_MATCHER.match(uri)) {
+            ITEMS -> {
+                val id = repository.insert(values)
+                context!!.contentResolver.notifyChange(uri, null) // Notify data change
+                ContentUris.withAppendedId(MOVIES_PROVIDER_CONTENT_URI, id)
+            }
+            else -> throw IllegalArgumentException("Invalid URI: $uri")
+        }
+    }
+
+    override fun update(uri: Uri, values: ContentValues?, selection: String?, selectionArgs: Array<String>?): Int {
+        return when (URI_MATCHER.match(uri)) {
+            ITEMS -> {
+                val count = repository.update(values, selection, selectionArgs)
+                context!!.contentResolver.notifyChange(uri, null) // Notify data change
+                count
+            }
+            ITEM_ID -> {
+                val id = uri.lastPathSegment ?: return 0
+                val count = repository.update(values, "id = ?", arrayOf(id))
+                context!!.contentResolver.notifyChange(uri, null) // Notify data change
+                count
+            }
+            else -> throw IllegalArgumentException("Unknown URI: $uri")
+        }
+    }
+
+    override fun delete(uri: Uri, selection: String?, selectionArgs: Array<String>?): Int {
+        return when (URI_MATCHER.match(uri)) {
+            ITEMS -> {
+                val count = repository.delete(selection, selectionArgs)
+                context!!.contentResolver.notifyChange(uri, null) // Notify data change
+                count
+            }
+            ITEM_ID -> {
+                val id = uri.lastPathSegment ?: return 0
+                val count = repository.delete("id = ?", arrayOf(id))
+                context!!.contentResolver.notifyChange(uri, null) // Notify data change
+                count
+            }
+            else -> throw IllegalArgumentException("Unknown URI: $uri")
+        }
+    }
+
+    override fun getType(uri: Uri): String? {
+        return when (URI_MATCHER.match(uri)) {
+            ITEMS -> "vnd.android.cursor.dir/$AUTHORITY.$PATH"
+            ITEM_ID -> "vnd.android.cursor.item/$AUTHORITY.$PATH"
+            else -> throw IllegalArgumentException("Unknown URI: $uri")
+        }
+    }
+
 }

@@ -14,6 +14,7 @@ import com.squareup.picasso.Picasso
 import hr.algebra.movie.ITEM_POSITION
 import hr.algebra.movie.ItemPagerActivity
 import hr.algebra.movie.MOVIES_PROVIDER_CONTENT_URI
+import hr.algebra.movie.MovieReceiver
 import hr.algebra.movie.R
 import hr.algebra.movie.model.Item
 import jp.wasabeef.picasso.transformations.RoundedCornersTransformation
@@ -46,12 +47,17 @@ class ItemAdapter (private val context: Context, private val items: MutableList<
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = items[position]
 
-        // Open ItemPagerActivity when clicking an item
         holder.itemView.setOnClickListener {
             val intent = Intent(context, ItemPagerActivity::class.java)
             intent.putExtra(ITEM_POSITION, position)
             context.startActivity(intent)
+
+            // Send broadcast with movie title
+            val broadcastIntent = Intent(context, MovieReceiver::class.java)
+            broadcastIntent.putExtra("MOVIE_TITLE", item.title)
+            context.sendBroadcast(broadcastIntent)
         }
+
 
         holder.bind(item)
 

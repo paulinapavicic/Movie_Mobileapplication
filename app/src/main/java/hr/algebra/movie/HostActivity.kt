@@ -16,6 +16,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import hr.algebra.movie.databinding.ActivityHostBinding
+import hr.algebra.movie.framework.sendBroadcast
 import java.util.Locale
 
 class HostActivity : AppCompatActivity() {
