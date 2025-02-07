@@ -24,4 +24,9 @@
         android:icon="@drawable/ic_croatian"/>
     </group>
 
+    <item
+        android:id="@+id/menuScheduleReminder"
+        android:title="@string/schedule_reminder"
+        android:icon="@android:drawable/ic_popup_reminder" />
+
 </menu>

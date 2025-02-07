@@ -18,7 +18,8 @@
     <string name="croatian">Hrvatski</string>
     <string name="release_date">Datum izlaska:</string>
     <string name="rating">"Ocjena: "</string>
-
+    <string name="schedule_reminder">Postavi podsjednik</string>
+    <string name="reminder_set_message">Podsjetnik je postavljen za 1 minutu!</string>
 
 
 </resources>

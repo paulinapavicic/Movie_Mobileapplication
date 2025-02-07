@@ -18,6 +18,8 @@
     <string name="croatian">Croatian</string>
     <string name="release_date">Release date:</string>
     <string name="rating">Rating:</string>
+    <string name="schedule_reminder">Schedule Reminder</string>
+    <string name="reminder_set_message">Reminder set for 1 minute from now!</string>
 
 
 </resources>
