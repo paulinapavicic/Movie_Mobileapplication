@@ -105,15 +105,15 @@ class HostActivity : AppCompatActivity() {
         val navController = Navigation.findNavController(this, R.id.navController)
         NavigationUI.setupWithNavController(binding.navView, navController)
 
-        // Handle language switching inside the drawer menu
+
         binding.navView.setNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.menuChangeToEnglish -> {
-                    setLocale("en") // Switch to English
+                    setLocale("en")
                     return@setNavigationItemSelectedListener true
                 }
                 R.id.menuChangeToCroatian -> {
-                    setLocale("hr") // Switch to Croatian
+                    setLocale("hr")
                     return@setNavigationItemSelectedListener true
                 }
                 R.id.menuScheduleReminder -> {
@@ -210,7 +210,7 @@ class HostActivity : AppCompatActivity() {
         val intent = Intent(this, HostActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
         startActivity(intent)
-        finish() // Close old activity instance
+        finish()
     }
 
 

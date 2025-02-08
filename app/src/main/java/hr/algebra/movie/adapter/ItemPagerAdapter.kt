@@ -31,17 +31,17 @@ class ItemPagerAdapter(private val context: Context, private val items: List<Ite
             tvOverview.text = item.overview
 
 
-            // Base URL for TMDB images
+
             val IMAGE_API_URL = "https://image.tmdb.org/t/p/w500"
 
-            // Load image using poster_path if available, otherwise use backdrop_path
+
             val imageUrl = when {
                 !item.poster_path.isNullOrEmpty() -> "$IMAGE_API_URL${item.poster_path}"
                 !item.backdrop_path.isNullOrEmpty() -> "$IMAGE_API_URL${item.backdrop_path}"
                 else -> null // No image available
             }
 
-            // Load image using Picasso
+
             imageUrl?.let {
                 Picasso.get()
                     .load(it)

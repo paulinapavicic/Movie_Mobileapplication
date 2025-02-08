@@ -22,16 +22,14 @@ class ItemPagerActivity : AppCompatActivity() {
         binding = ActivityItemPagerBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Enable back button in the action bar
+
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        // Initialize the ViewPager2 with movie data
         initPager()
     }
 
     private fun initPager() {
-        // Fetch movie items from your database or source
-        items = fetchMoviesFromDatabase() // Implement this function based on your project
+        items = fetchMoviesFromDatabase()
         itemPosition = intent.getIntExtra(ITEM_POSITION, 0)
 
         // Set up ViewPager2 with the adapter
@@ -44,7 +42,7 @@ class ItemPagerActivity : AppCompatActivity() {
         return super.onSupportNavigateUp()
     }
 
-    // Function to fetch movies from the database (modify this based on your actual database setup)
+
     private fun fetchMoviesFromDatabase(): MutableList<Item> {
         val moviesList = mutableListOf<Item>()
         val dbHelper = MovieSqlHelper(this)

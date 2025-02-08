@@ -52,7 +52,7 @@ class ItemAdapter (private val context: Context, private val items: MutableList<
             intent.putExtra(ITEM_POSITION, position)
             context.startActivity(intent)
 
-            // Send broadcast with movie title
+
             val broadcastIntent = Intent(context, MovieReceiver::class.java)
             broadcastIntent.putExtra("MOVIE_TITLE", item.title)
             context.sendBroadcast(broadcastIntent)

@@ -32,7 +32,7 @@ class MovieFetcher (private val context: Context){
                     .addInterceptor { chain ->
                         val originalRequest: Request = chain.request()
 
-                        // Add headers to the original request
+
                         val modifiedRequest: Request = originalRequest.newBuilder()
                             .addHeader("accept", "application/json")
                             .addHeader(
