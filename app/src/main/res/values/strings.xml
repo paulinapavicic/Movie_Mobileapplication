@@ -20,6 +20,7 @@
     <string name="rating">Rating:</string>
     <string name="schedule_reminder">Schedule Reminder</string>
     <string name="reminder_set_message">Reminder set for 1 minute from now!</string>
+    <string name="don_t_forget_to_watch_your_movie">Don\'t forget to watch your movie!</string>
 
 
 </resources>

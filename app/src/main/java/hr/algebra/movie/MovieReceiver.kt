@@ -42,7 +42,7 @@ class MovieReceiver : BroadcastReceiver() {
 
         val notification = NotificationCompat.Builder(context, channelId)
             .setContentTitle(movieTitle)
-            .setContentText("Don't forget to watch your movie!")
+            .setContentText(context.getString(R.string.don_t_forget_to_watch_your_movie))
             .setSmallIcon(android.R.drawable.ic_dialog_info)
             .setContentIntent(pendingIntent)
             .setAutoCancel(true)

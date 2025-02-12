@@ -20,6 +20,9 @@
     <string name="rating">"Ocjena: "</string>
     <string name="schedule_reminder">Postavi podsjednik</string>
     <string name="reminder_set_message">Podsjetnik je postavljen za 1 minutu!</string>
+    <string name="don_t_forget_to_watch_your_movie">Nemoj zaboraviti pogledati svoj film!</string>
+
+
 
 
 </resources>
